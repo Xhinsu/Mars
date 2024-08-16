@@ -2,6 +2,7 @@ package org.example.INPUT;
 
 import org.example.DATA.Instruction;
 import org.example.DATA.Position;
+import org.example.DATA.Rover;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -88,6 +89,57 @@ class InputParserTest {
         int actualResult = inputParser.parseInputToInstruction(input).size();
         assertEquals(expected, actualResult );
     }
+    @Test
+    public void roverSetLandingEmptyString(){
+        String expected = "";
+        String input ="";
+
+        String actualResult = InputParser.parseLandingInput(input);
+        assertEquals(expected, actualResult );
+    }
+
+    @Test
+    public void roverSetLandingInvalidInput(){
+        String expected = "";
+        String input ="l";
+
+        String actualResult = InputParser.parseLandingInput(input);
+        assertEquals(expected, actualResult );
+    }
+    @Test
+    public void roverSetLandingInvalidInputs(){
+        String expected = "";
+        String input ="lADSF";
+
+        String actualResult = InputParser.parseLandingInput(input);
+        assertEquals(expected, actualResult );
+    }
+    @Test
+    public void roverSetLandingOutOfBound(){
+        String expected = "";
+        String input ="6 6 S";
+
+        String actualResult = InputParser.parseLandingInput(input);
+        assertEquals(expected, actualResult );
+    }
+
+    @Test
+    public void roverSetLandingValidInput(){
+        String expected = "1 1 N";
+        String input ="1 1 N";
+
+        String actualResult = InputParser.parseLandingInput(input);
+        assertEquals(expected, actualResult );
+    }
+    @Test
+    public void roverSetLandingValidInputII(){
+        String expected = "3 4 W";
+        String input ="3 4 W";
+
+        String actualResult = InputParser.parseLandingInput(input);
+        assertEquals(expected, actualResult );
+    }
+
 
 
 

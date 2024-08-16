@@ -18,27 +18,47 @@ public class InputParser {
         this.currentPosition = currentPosition;
     }
 
-    public static String getUserInput(){
+    public static String getInputInstruction(){
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Enter instructions: ");
         String userInput = scanner.nextLine();
         scanner.close();
         return userInput;
     }
 
-    public static String parseString(String input){
-        String userInputRegex = "[LRM][LRM]{0,9}";
-        String result ="";
-
-        if(input.matches(userInputRegex)){
-            result+= input;
-            System.out.println(input);
-        }else {
-            System.out.println("invalid input");
-        }
+    public static String getLandingInput(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter landing cordinates: ");
+        String result = scanner.nextLine();
         return result;
     }
+
+    public static String parseLandingInput(String input) {
+        String regex = "^[012345] [012345] [NEWS]";
+        String result = "";
+
+            if (input.matches(regex)) {
+                result+=input;
+            }else{
+            System.out.println("Invalid landing coordinates");}
+
+        System.out.println(result);
+        return result;
+    }
+
+
+        public static String parseString (String input){
+            String userInputRegex = "[LRM][LRM]{0,9}";
+            String result = "";
+
+            if (input.matches(userInputRegex)) {
+                result += input;
+                System.out.println(input);
+            } else {
+                System.out.println("invalid input");
+            }
+            return result;
+        }
 
     public List<Instruction> parseInputToInstruction(String input) {
 
@@ -54,9 +74,6 @@ public class InputParser {
                         instructionsList.add(Instruction.M);
                     }
                 }
-
-
-
             System.out.println(instructionsList);
             return instructionsList;
         }
@@ -77,19 +94,5 @@ public class InputParser {
         return new PlateauSize(Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]));
     }
 
-
-
-
-
-//        if(currentPosition.getFacing() == CompassDirection.N|| currentPosition.getFacing() ==CompassDirection.S){
-//         changeDirection();
-//
-//
-//            this.currentPosition =
-//            System.out.println(this.currentPosition);
-//        } else if (currentPosition.getFacing() == CompassDirection.W|| currentPosition.getFacing() ==CompassDirection.E) {
-//
-//
-//        }
     }
 

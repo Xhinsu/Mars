@@ -12,9 +12,10 @@ public class Rover {
         this.currentPosition = position;
     }
 
-    public void setLandingPosition(){
+
+
+    public String setLandingPosition(){
         Scanner scanner = new Scanner(System.in);
-        String validInput = "0,1,2,3,4,5,N,E,S,W";
         String regex = "^[012345] [012345] [NEWS]";
         while (true){
             System.out.println("Enter landing position!");
@@ -30,7 +31,7 @@ public class Rover {
             else {
                 System.out.println("Invalid input");
             }
-        }
+        }return Position.getInstance().toString();
     }
 
     public void changeDirection(Instruction instruction) {
