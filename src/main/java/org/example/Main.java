@@ -20,9 +20,6 @@ public class Main {
     List<Instruction> instructions = inputParser.userInput();
     rover.move(instructions);
 
-//    inputParser.changeInitialDirection();
-//    List<Instruction> instructionList = inputParser.userInput();
-//    inputParser.move(instructionList);
 
     System.out.println(rover);
 
