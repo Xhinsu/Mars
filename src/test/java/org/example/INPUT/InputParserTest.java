@@ -21,6 +21,7 @@ class InputParserTest {
     }
 
     @Test
+    @DisplayName("Testing parseUserInput methods")
     public void parseUserInputEmpty(){
         InputParser inputParser = new InputParser(Position.getInstance());
         String expected = "[]";
