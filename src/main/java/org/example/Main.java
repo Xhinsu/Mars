@@ -18,11 +18,18 @@ public class Main {
     InputParser inputParser = new InputParser(Position.getInstance());
     Position position = Position.getInstance();
     Rover rover = new Rover(position);
-//    PlateauSize plateauSize= inputParser.setPlateauDimensions();
-//    rover.setLandingPosition();
-//    List<Instruction> instructions = inputParser.userInput();
-//    rover.setLandingPosition();
-        parseLandingInput(InputParser.getLandingInput());
+    Plateau plateau = new Plateau();
+//    int[][] test = new int[1][2];
+//        System.out.println(test[0][1]);
+//        Scanner scanner = new Scanner(System.in);
+//        String[] dimensions = scanner.nextLine().split(" ");
+//        System.out.println(Arrays.toString(dimensions));
+//        System.out.println(dimensions.length);
+
+
+    plateau.setPlateauDimensions("asdf");
+
+
 
 //        inputParser.parseInputToInstruction(InputParser.getUserInput());
 

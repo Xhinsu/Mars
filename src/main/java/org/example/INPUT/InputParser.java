@@ -2,7 +2,7 @@ package org.example.INPUT;
 
 import org.example.DATA.CompassDirection;
 import org.example.DATA.Instruction;
-import org.example.DATA.PlateauSize;
+import org.example.DATA.Plateau;
 import org.example.DATA.Position;
 
 import java.util.ArrayList;
@@ -18,21 +18,17 @@ public class InputParser {
         this.currentPosition = currentPosition;
     }
 
-    public static String getInputInstruction(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter instructions: ");
-        String userInput = scanner.nextLine();
-        scanner.close();
-        return userInput;
-    }
 
+
+
+    //Setting initial landing coordinates!
     public static String getLandingInput(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter landing cordinates: ");
         String result = scanner.nextLine();
         return result;
     }
-
+    //parsing strings and filtering invalid
     public static String parseLandingInput(String input) {
         String regex = "^[012345] [012345] [NEWS]";
         String result = "";
@@ -45,9 +41,16 @@ public class InputParser {
         System.out.println(result);
         return result;
     }
-
-
-        public static String parseString (String input){
+//Getting user input for movement/changing instruction
+    public static String getInputInstruction(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter instructions: ");
+        String userInput = scanner.nextLine();
+        scanner.close();
+        return userInput;
+    }
+//parse user input and filter to get valid string
+    public static String parseString (String input){
             String userInputRegex = "[LRM][LRM]{0,9}";
             String result = "";
 
@@ -59,7 +62,7 @@ public class InputParser {
             }
             return result;
         }
-
+//convert valid user input into instructions
     public List<Instruction> parseInputToInstruction(String input) {
 
         List<Instruction> instructionsList = new ArrayList<>();
@@ -77,22 +80,15 @@ public class InputParser {
             System.out.println(instructionsList);
             return instructionsList;
         }
-
-
-//    public void changeInitialDirection() {
-//        if (currentPosition.getFacing() == null) {
-//            currentPosition.setFacing(CompassDirection.N);
-
     }
-
-
-
-    public PlateauSize setPlateauDimensions(){
+    public static String inputPlateauDimensions(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter plateau dimensions:");
-        String[] dimensions = scanner.nextLine().split(" ");
-        return new PlateauSize(Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]));
+        return scanner.nextLine();
     }
+
+
+
 
     }
 

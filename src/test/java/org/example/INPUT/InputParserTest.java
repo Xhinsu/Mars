@@ -1,8 +1,10 @@
 package org.example.INPUT;
 
 import org.example.DATA.Instruction;
+import org.example.DATA.Plateau;
 import org.example.DATA.Position;
 import org.example.DATA.Rover;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -139,6 +141,28 @@ class InputParserTest {
         String actualResult = InputParser.parseLandingInput(input);
         assertEquals(expected, actualResult );
     }
+
+    @Test
+    @DisplayName("Testing setPlateauMethods")
+    public void plateauNullInput(){
+        Plateau plateau =new Plateau();
+        String expected = null;
+        String input ="aasdf";
+
+        int[][] actualResult = plateau.setPlateauDimensions(null);
+        assertNull(actualResult);
+    }
+
+   @Test
+    public void plateauInvalidInput(){
+        Plateau plateau =new Plateau();
+        String input ="aasdf";
+
+        int[][] actualResult = plateau.setPlateauDimensions(input);
+       assertNull(actualResult);
+    }
+
+
 
 
 
