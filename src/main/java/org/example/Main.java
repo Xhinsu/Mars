@@ -19,15 +19,20 @@ public class Main {
     Position position = Position.getInstance();
     Rover rover = new Rover(position);
     Plateau plateau = new Plateau();
-//    int[][] test = new int[1][2];
-//        System.out.println(test[0][1]);
-//        Scanner scanner = new Scanner(System.in);
-//        String[] dimensions = scanner.nextLine().split(" ");
-//        System.out.println(Arrays.toString(dimensions));
-//        System.out.println(dimensions.length);
 
+//   plateau.setPlateauDimensions(null);
 
-    plateau.setPlateauDimensions("asdf");
+        String input ="5 7";
+//        int[][] expected = new int[5][5];
+
+//        plateau.setPlateauDimensions(input);
+//        System.out.println(Arrays.deepToString(plateau.getPlateau()));
+
+        plateau.setPlateauDimensions(input);
+        int[][] expected = plateau.getPlateau();
+//        System.out.println(Arrays.deepToString(expected));
+        System.out.println(expected.length);
+        System.out.println(expected[0].length);
 
 
 

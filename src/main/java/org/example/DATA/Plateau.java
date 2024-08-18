@@ -1,6 +1,7 @@
 package org.example.DATA;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Plateau {
@@ -14,23 +15,23 @@ public class Plateau {
         return plateau;
     }
 
-    public void setPlateau(int[][] plateau) {
-        this.plateau = plateau;
-    }
 
-
-    public int[][] setPlateauDimensions(String input){
-        if(input == null) return null;
+    public void setPlateauDimensions(String input){
+        assert input != null;
         String[] dimension =input.split(" ");
+        try{
+            if(input.length() <= 3){
+                this.plateau = new int[Integer.parseInt(dimension[0])][ Integer.parseInt(dimension[1])];
+            }else {
+                System.out.println("Invalid input");
+            }
 
-//        if(dimensions.length<2){
-//            this.plateau = new int[Integer.parseInt(dimensions[0])][ Integer.parseInt(dimensions[1])];
-//            return this.plateau;
-//        }else {
-//            System.out.println("Invalid input");
-//        }
+        }catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+
+
+        }
         System.out.println(Arrays.deepToString(plateau));
-        return this.plateau;
     }
 
     @Override

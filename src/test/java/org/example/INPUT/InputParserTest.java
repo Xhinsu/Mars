@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -148,19 +149,39 @@ class InputParserTest {
     public void plateauNullInput(){
         Plateau plateau =new Plateau();
         String expected = null;
-        String input ="aasdf";
 
-        int[][] actualResult = plateau.setPlateauDimensions(null);
-        assertNull(actualResult);
+        assertNull(plateau.getPlateau());
     }
 
    @Test
     public void plateauInvalidInput(){
         Plateau plateau =new Plateau();
-        String input ="aasdf";
+        String input ="asdfa";
+        plateau.setPlateauDimensions(input);
 
-        int[][] actualResult = plateau.setPlateauDimensions(input);
-       assertNull(actualResult);
+        assertNull(plateau.getPlateau());
+    }
+
+    @Test
+    public void plateauValidInputWithoutSpaces(){
+        Plateau plateau =new Plateau();
+        String input ="55";
+        plateau.setPlateauDimensions(input);
+       assertNull(plateau.getPlateau());
+    }
+
+    @Test
+    @DisplayName("Tested plateau rows/column of void method")
+    public void plateauValidInput(){
+        Plateau plateau =new Plateau();
+        String input ="5 5";
+        plateau.setPlateauDimensions(input);
+        int[][] dimension = plateau.getPlateau();
+        int rowLength = dimension.length;
+        int columnLength = dimension[0].length;
+        String actual = Integer.toString(rowLength)+ Integer.toString(columnLength);
+        String expected = "55";
+        assertEquals(actual,expected);
     }
 
 
