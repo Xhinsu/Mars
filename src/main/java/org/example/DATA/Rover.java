@@ -25,7 +25,6 @@ public class Rover {
                 Position.getInstance().setX(Integer.parseInt(landingInstructionArray[0]));
                 Position.getInstance().setY(Integer.parseInt(landingInstructionArray[1]));
                 Position.getInstance().setFacing(CompassDirection.valueOf(landingInstructionArray[2]));
-//                System.out.println(landingInstruction);
                 break;
             }
             else {
@@ -56,17 +55,20 @@ public class Rover {
 
     public void move() {
         var instructions = InputParser.parseInputToInstruction(InputParser.getInputInstruction());
-
+        Plateau plateau =  Plateau.getInstance();
+        int[][] dimension = plateau.getPlateau();
+        int row = dimension.length;
+        int column = dimension[0].length;
         for (int i = 0; i < instructions.size(); i++) {
 
             if (instructions.get(i).equals(Instruction.L) || instructions.get(i).equals(Instruction.R)) {
                 changeDirection(instructions.get(i));
             } else if (instructions.get(i).equals(Instruction.M)) {
                 if (currentPosition.getFacing() == CompassDirection.N) {
-                    if(currentPosition.getY()<6){currentPosition.setY(currentPosition.getY() + 1);}
+                    if(currentPosition.getY()<column){currentPosition.setY(currentPosition.getY() + 1);}
                     else{System.out.println("rover cant move beyond: " + currentPosition.getY());}
                 } else if (currentPosition.getFacing() == CompassDirection.E) {
-                    if(currentPosition.getY()<6){currentPosition.setX(currentPosition.getX() + 1);}
+                    if(currentPosition.getY()<column){currentPosition.setX(currentPosition.getX() + 1);}
                     else{System.out.println("rover cant move beyond: " + currentPosition.getX());}
                 }
                 else if(currentPosition.getFacing()==CompassDirection.W){
@@ -78,7 +80,9 @@ public class Rover {
                        System.out.println("rover cant move below: "+ currentPosition.getY());
                     }}
             }
-        }}
+        }
+        System.out.println(Position.getInstance());
+        }
 
         @Override
         public String toString() {

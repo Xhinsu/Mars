@@ -16,13 +16,12 @@ public class Main {
     InputParser inputParser = new InputParser(Position.getInstance());
     Position position = Position.getInstance();
     Rover rover = new Rover(position);
-    Plateau plateau = new Plateau();
+    Plateau plateau = Plateau.getInstance();
 
     //action
+   plateau.setPlateauDimensions(inputPlateauDimensions());
    setLandingPosition();
    rover.move();
-   System.out.println(Position.getInstance());
-
 
     }
 }

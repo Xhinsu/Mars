@@ -76,9 +76,23 @@ public class InputParser {
             return instructionsList;
     }
     public static String inputPlateauDimensions(){
+        String result ="";
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter plateau dimensions:");
-        return scanner.nextLine();
+        String regex = "^[0-9] [0-9]";
+        while (true) {
+
+            System.out.println("Enter plateau dimensions:");
+            String input = scanner.nextLine();
+            if (input.matches(regex)) {
+                result = input;
+                System.out.println(result);
+                break;
+            } else {
+                System.out.println("Invalid input");
+            }
+        }
+        return result;
+
     }
-    }
+}
 

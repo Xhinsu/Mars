@@ -7,8 +7,14 @@ import java.util.Scanner;
 public class Plateau {
 
     private int[][] plateau ;
+    private static Plateau instance;
 
     public Plateau(){
+    }
+
+    public static Plateau getInstance() {
+        if(instance == null) instance = new Plateau();
+        return instance;
     }
 
     public int[][] getPlateau() {
@@ -19,14 +25,16 @@ public class Plateau {
     public void setPlateauDimensions(String input){
         assert input != null;
         String[] dimension =input.split(" ");
-        try{
-            if(input.length() <= 3){
-                this.plateau = new int[Integer.parseInt(dimension[0])][ Integer.parseInt(dimension[1])];
-            }else {
-                System.out.println("Invalid input");
-            }
-        }catch (Exception e) {
-            System.err.println("Error: " + e.getMessage() + ". Add rows and column");
+        while(true){
+//            try{
+                if(input.length() <= 3){
+                    this.plateau = new int[Integer.parseInt(dimension[0])][ Integer.parseInt(dimension[1])];
+                    break;
+                }
+                else {System.out.println("invalid");};
+//            }catch (Exception e) {
+//                System.err.println("Error: " + e.getMessage() + ". Add int rows and column");
+//            }
         }
     }
 
