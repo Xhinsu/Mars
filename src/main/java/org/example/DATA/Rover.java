@@ -1,5 +1,7 @@
 package org.example.DATA;
 
+import org.example.INPUT.InputParser;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,25 +15,23 @@ public class Rover {
     }
 
 
-
-    public String setLandingPosition(){
-        Scanner scanner = new Scanner(System.in);
+    public static void setLandingPosition(){
+//        Scanner scanner = new Scanner(System.in);
         String regex = "^[012345] [012345] [NEWS]";
         while (true){
-            System.out.println("Enter landing position!");
-            String landingInstruction = scanner.nextLine();
+            String landingInstruction = InputParser.parseLandingInput(InputParser.getLandingInput());
             if(landingInstruction.matches(regex)){
                 String[] landingInstructionArray = landingInstruction.split(" ");
                 Position.getInstance().setX(Integer.parseInt(landingInstructionArray[0]));
                 Position.getInstance().setY(Integer.parseInt(landingInstructionArray[1]));
                 Position.getInstance().setFacing(CompassDirection.valueOf(landingInstructionArray[2]));
-                System.out.println(landingInstruction);
+//                System.out.println(landingInstruction);
                 break;
             }
             else {
                 System.out.println("Invalid input");
             }
-        }return Position.getInstance().toString();
+        }
     }
 
     public void changeDirection(Instruction instruction) {
@@ -54,7 +54,8 @@ public class Rover {
     }
 
 
-    public void move(List<Instruction> instructions) {
+    public void move() {
+        var instructions = InputParser.parseInputToInstruction(InputParser.getInputInstruction());
 
         for (int i = 0; i < instructions.size(); i++) {
 
@@ -62,10 +63,10 @@ public class Rover {
                 changeDirection(instructions.get(i));
             } else if (instructions.get(i).equals(Instruction.M)) {
                 if (currentPosition.getFacing() == CompassDirection.N) {
-                    if(currentPosition.getY()<5){currentPosition.setY(currentPosition.getY() + 1);}
+                    if(currentPosition.getY()<6){currentPosition.setY(currentPosition.getY() + 1);}
                     else{System.out.println("rover cant move beyond: " + currentPosition.getY());}
                 } else if (currentPosition.getFacing() == CompassDirection.E) {
-                    if(currentPosition.getY()<5){currentPosition.setX(currentPosition.getX() + 1);}
+                    if(currentPosition.getY()<6){currentPosition.setX(currentPosition.getX() + 1);}
                     else{System.out.println("rover cant move beyond: " + currentPosition.getX());}
                 }
                 else if(currentPosition.getFacing()==CompassDirection.W){

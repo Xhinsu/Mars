@@ -18,15 +18,11 @@ public class InputParser {
         this.currentPosition = currentPosition;
     }
 
-
-
-
     //Setting initial landing coordinates!
     public static String getLandingInput(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter landing cordinates: ");
-        String result = scanner.nextLine();
-        return result;
+        return scanner.nextLine();
     }
     //parsing strings and filtering invalid
     public static String parseLandingInput(String input) {
@@ -50,8 +46,8 @@ public class InputParser {
         return userInput;
     }
 //parse user input and filter to get valid string
-    public static String parseString (String input){
-            String userInputRegex = "[LRM][LRM]{0,9}";
+    public static String parseInstructionString (String input){
+            String userInputRegex = "[LRM][LRM]{1,15}";
             String result = "";
 
             if (input.matches(userInputRegex)) {
@@ -63,12 +59,11 @@ public class InputParser {
             return result;
         }
 //convert valid user input into instructions
-    public List<Instruction> parseInputToInstruction(String input) {
+    public static List<Instruction> parseInputToInstruction(String input) {
 
         List<Instruction> instructionsList = new ArrayList<>();
-        while (true) {
-                String[] tempInput = parseString(input).split("");
-                for (int i = 0; i < tempInput.length; i++) {
+        String[] tempInput = parseInstructionString(input).split("");
+        for (int i = 0; i < tempInput.length; i++) {
                     if (tempInput[i].equals("L")) {
                         instructionsList.add(Instruction.L);
                     } else if (tempInput[i].equals("R")) {
@@ -79,16 +74,11 @@ public class InputParser {
                 }
             System.out.println(instructionsList);
             return instructionsList;
-        }
     }
     public static String inputPlateauDimensions(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter plateau dimensions:");
         return scanner.nextLine();
     }
-
-
-
-
     }
 

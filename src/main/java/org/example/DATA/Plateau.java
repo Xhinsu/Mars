@@ -25,13 +25,9 @@ public class Plateau {
             }else {
                 System.out.println("Invalid input");
             }
-
         }catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-
-
+            System.err.println("Error: " + e.getMessage() + ". Add rows and column");
         }
-        System.out.println(Arrays.deepToString(plateau));
     }
 
     @Override

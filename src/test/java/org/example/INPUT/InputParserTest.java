@@ -45,7 +45,7 @@ class InputParserTest {
     public void parseUserInputPartialValid(){
         InputParser inputParser = new InputParser(Position.getInstance());
         String expected = "[]";
-        String input = InputParser.parseString("LmrM");
+        String input = InputParser.parseInstructionString("LmrM");
         String actualResult = inputParser.parseInputToInstruction(input).toString();
         assertEquals(expected, actualResult );
     }
@@ -53,7 +53,7 @@ class InputParserTest {
     public void parseUserInputLongValid(){
         InputParser inputParser = new InputParser(Position.getInstance());
         String expected = "[L, M, R, M, M, M, M]";
-        String input = InputParser.parseString("LMRMMMM");
+        String input = InputParser.parseInstructionString("LMRMMMM");
         String actualResult = inputParser.parseInputToInstruction(input).toString();
         assertEquals(expected, actualResult );
     }
@@ -61,7 +61,7 @@ class InputParserTest {
     public void parseUserInputSmallValid(){
         InputParser inputParser = new InputParser(Position.getInstance());
         String expected = "[L]";
-        String input = InputParser.parseString("L");
+        String input = InputParser.parseInstructionString("L");
         String actualResult = inputParser.parseInputToInstruction(input).toString();
         assertEquals(expected, actualResult );
     }
