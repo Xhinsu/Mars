@@ -5,6 +5,7 @@ import org.example.INPUT.InputParser;
 
 import java.util.*;
 
+import static org.example.DATA.Rover.*;
 import static org.example.DATA.Rover.setLandingPosition;
 import static org.example.INPUT.InputParser.*;
 
@@ -19,12 +20,16 @@ Plateau plateau = Plateau.getInstance();
 
 
 
+
 plateau.setPlateauDimensions(inputPlateauDimensions());
 setLandingPosition();
-rover.move();
-//        System.out.println(getInputInstruction());
-//        InputParser.parseInputToInstruction(InputParser.getInputInstruction());
-//        System.out.println(plateau);
+
+rover.start();
+// int r = 0;
+//
+//        boolean test = r>0;
+//        System.out.println(test);
+
 
     }
 }

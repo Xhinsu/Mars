@@ -14,6 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputParserTest {
+    Position position = new Position() ;
 
     @Test
     public void firstTest(){
@@ -24,7 +25,7 @@ class InputParserTest {
     @Test
     @DisplayName("Testing parseUserInput methods")
     public void parseUserInputEmpty(){
-        InputParser inputParser = new InputParser(Position.getInstance());
+        InputParser inputParser = new InputParser(position);
         String expected = "[]";
         String input = " ";
         String actualResult = inputParser.parseInputToInstruction(input).toString();
@@ -33,7 +34,7 @@ class InputParserTest {
     }
     @Test
     public void parseUserInputLowCases(){
-        InputParser inputParser = new InputParser(Position.getInstance());
+        InputParser inputParser = new InputParser(position);
         String expected = "[]";
         String input = "lmr";
         String actualResult = inputParser.parseInputToInstruction(input).toString();
@@ -43,7 +44,7 @@ class InputParserTest {
 
     @Test
     public void parseUserInputPartialValid(){
-        InputParser inputParser = new InputParser(Position.getInstance());
+        InputParser inputParser = new InputParser(position);
         String expected = "[]";
         String input = InputParser.parseInstructionString("LmrM");
         String actualResult = inputParser.parseInputToInstruction(input).toString();
@@ -51,7 +52,7 @@ class InputParserTest {
     }
     @Test
     public void parseUserInputLongValid(){
-        InputParser inputParser = new InputParser(Position.getInstance());
+        InputParser inputParser = new InputParser(position);
         String expected = "[L, M, R, M, M, M, M]";
         String input = InputParser.parseInstructionString("LMRMMMM");
         String actualResult = inputParser.parseInputToInstruction(input).toString();
@@ -59,7 +60,7 @@ class InputParserTest {
     }
     @Test
     public void parseUserInputSmallValid(){
-        InputParser inputParser = new InputParser(Position.getInstance());
+        InputParser inputParser = new InputParser(position);
         String expected = "[L]";
         String input = InputParser.parseInstructionString("L");
         String actualResult = inputParser.parseInputToInstruction(input).toString();
@@ -67,7 +68,7 @@ class InputParserTest {
     }
     @Test
     public void parseInputToInstructionCheckingValidInput(){
-        InputParser inputParser = new InputParser(Position.getInstance());
+        InputParser inputParser = new InputParser(position);
         int expected = 3;
         String input ="LLM";
 
@@ -76,7 +77,7 @@ class InputParserTest {
     }
     @Test
     public void parseInputToInstructionCheckingInValidInput(){
-        InputParser inputParser = new InputParser(Position.getInstance());
+        InputParser inputParser = new InputParser(position);
         int expected = 0;
         String input ="LLm";
 
@@ -86,7 +87,7 @@ class InputParserTest {
 
     @Test
     public void parseInputToInstructionCheckingEmptyInput(){
-        InputParser inputParser = new InputParser(Position.getInstance());
+        InputParser inputParser = new InputParser(position);
         int expected = 0;
         String input ="";
 
