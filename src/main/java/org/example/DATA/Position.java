@@ -6,7 +6,7 @@ public class Position {
     private int x;
     private int y;
     private CompassDirection facing; // this type can be whatever your direction enum is called
-    private static Position instance;
+//    private static Position instance;
 
     public Position(){
     }
@@ -16,11 +16,11 @@ public class Position {
         this.facing = facing;
         }
 
-        public static Position getInstance(){
-        if(instance == null){
-            instance = new Position();
-        } return  instance;
-        }
+//        public static Position getInstance(){
+//        if(instance == null){
+//            instance = new Position();
+//        } return  instance;
+//        }
 
     public int getX() {
         return x;

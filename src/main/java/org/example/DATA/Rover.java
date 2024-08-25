@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Rover {
-    Position currentPosition;
+    static Position currentPosition;
 
 
     public Rover(Position position){
-        this.currentPosition = position;
+        currentPosition = position;
     }
 
 
@@ -22,13 +22,13 @@ public class Rover {
             String landingInstruction = InputParser.parseLandingInput(InputParser.getLandingInput());
             if(landingInstruction.matches(regex)){
                 String[] landingInstructionArray = landingInstruction.split(" ");
-                Position.getInstance().setX(Integer.parseInt(landingInstructionArray[0]));
-                Position.getInstance().setY(Integer.parseInt(landingInstructionArray[1]));
-                Position.getInstance().setFacing(CompassDirection.valueOf(landingInstructionArray[2]));
+                currentPosition.setX(Integer.parseInt(landingInstructionArray[0]));
+                currentPosition.setY(Integer.parseInt(landingInstructionArray[1]));
+                currentPosition.setFacing(CompassDirection.valueOf(landingInstructionArray[2]));
                 break;
             }
             else {
-                System.out.println("Invalid input");
+                System.out.println("Invalid input. Add 2 digit below 6 and 1 cardinal direction. i. 1 2 N");
             }
         }
     }
@@ -36,19 +36,13 @@ public class Rover {
     public void changeDirection(Instruction instruction) {
         ArrayList<CompassDirection> compassDirectionList = new ArrayList<>(List.of(CompassDirection.N, CompassDirection.E, CompassDirection.S, CompassDirection.W));
         int currentCompassDirectionIndex = compassDirectionList.indexOf(currentPosition.getFacing()); //current index
-
-        if(currentCompassDirectionIndex == 0 && instruction.equals(Instruction.L)){
-            Position.getInstance().setFacing(compassDirectionList.get(currentCompassDirectionIndex+3));
-        }
-        else if(currentCompassDirectionIndex == 3 && instruction.equals(Instruction.R)){
-            Position.getInstance().setFacing(compassDirectionList.getFirst());
-        }
-        else if(instruction.equals(Instruction.R)){
-            Position.getInstance().setFacing(compassDirectionList.get(currentCompassDirectionIndex+1));
-        }
-        else if(instruction.equals(Instruction.L)){
-            {
-                Position.getInstance().setFacing(compassDirectionList.get(currentCompassDirectionIndex-1));}
+        switch(instruction){
+            case Instruction.L :
+                currentPosition.setFacing(currentCompassDirectionIndex >0 ? compassDirectionList.get(currentCompassDirectionIndex-1): compassDirectionList.get(currentCompassDirectionIndex+3));
+                break;
+            case Instruction.R:
+                currentPosition.setFacing(currentCompassDirectionIndex < 2 ? compassDirectionList.get(currentCompassDirectionIndex+1):compassDirectionList.get(currentCompassDirectionIndex-1));
+                break;
         }
     }
 
@@ -81,11 +75,11 @@ public class Rover {
                     }}
             }
         }
-        System.out.println(Position.getInstance());
+        System.out.println(currentPosition);
         }
 
         @Override
         public String toString() {
-            return String.format("Current position is x:%d y:%d and %s ", this.currentPosition.getX(), this.currentPosition.getY(), this.currentPosition.getFacing());
+            return String.format("Current position is x:%d y:%d and %s ", currentPosition.getX(), currentPosition.getY(), currentPosition.getFacing());
         }
     }

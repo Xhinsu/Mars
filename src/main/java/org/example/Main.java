@@ -13,15 +13,18 @@ import static org.example.INPUT.InputParser.*;
 public class Main {
     public static void main(String[] args) {
 
-    InputParser inputParser = new InputParser(Position.getInstance());
-    Position position = Position.getInstance();
-    Rover rover = new Rover(position);
-    Plateau plateau = Plateau.getInstance();
+Position position = new Position() ;
+Rover rover = new Rover(position);
+Plateau plateau = Plateau.getInstance();
 
-    //action
-   plateau.setPlateauDimensions(inputPlateauDimensions());
-   setLandingPosition();
-   rover.move();
+
+
+plateau.setPlateauDimensions(inputPlateauDimensions());
+setLandingPosition();
+rover.move();
+//        System.out.println(getInputInstruction());
+//        InputParser.parseInputToInstruction(InputParser.getInputInstruction());
+//        System.out.println(plateau);
 
     }
 }

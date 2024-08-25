@@ -11,7 +11,6 @@ public class MissionControl {
 
     public boolean isPositionEmpty(){
 
-
         return false;
     }
 

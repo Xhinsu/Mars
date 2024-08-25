@@ -47,7 +47,7 @@ public class InputParser {
     }
 //parse user input and filter to get valid string
     public static String parseInstructionString (String input){
-            String userInputRegex = "[LRM][LRM]{1,15}";
+            String userInputRegex = "[LRM]{1,15}";
             String result = "";
 
             if (input.matches(userInputRegex)) {
